@@ -34,6 +34,8 @@
   font-weight: 700;
   font-style: normal;
 }
+
+
 /* root selector and * selector  */
 *{
   margin: 0;
@@ -46,6 +48,7 @@
     font-family: "Poppins", sans-serif;
 
 }
+
 :root{
   --main-color:#fe5b3d;
   --second-color:#ffac38;
@@ -162,16 +165,6 @@ header{
 
 .text p{
   margin: 00.5rem 0 1rem;
-}
-
-.app-store{
-  display: flex;
-}
-
-.app-store img{
-  width: 100px;
-  margin-right: 1rem;
-  cursor: pointer;
 }
 
 .form-container form{
