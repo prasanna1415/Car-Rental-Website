@@ -459,7 +459,7 @@ font-size: 1.8rem;
   font-size: 21px;
 }
 
-/* Popup styles */
+/* Popup styles
 .popup-container {
   display: none;
   position: fixed;
@@ -507,7 +507,7 @@ font-size: 1.8rem;
 } */
 
 
-.popup-form .input-box {
+/* .popup-form .input-box {
   margin-bottom: 15px;
 }
 
@@ -531,4 +531,4 @@ font-size: 1.8rem;
 
 .popup-form .input-box .btn:hover {
   background-color: var(--second-color);
-}
+} */

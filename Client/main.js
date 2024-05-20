@@ -17,21 +17,18 @@ sr.reveal('.about-container .box',{delay:400,origin:'top'})
 sr.reveal('.reviews-container',{delay:400,origin:'top'})
 sr.reveal('.newsletter .box',{delay:400,origin:'bottom'})
 
-// Open Sign-up Popup
-function openSignupPopup() {
-    document.getElementById('signup-popup').style.display = 'flex';
-}
+
 
 // Open Sign-in Popup
-function openSigninPopup() {
-    document.getElementById('signin-popup').style.display = 'flex';
-}
+// function openSigninPopup() {
+//     document.getElementById('signin-popup').style.display = 'flex';
+// }
      
 
-// // Close Popup
-// function closePopup(popupId) {
-//     document.getElementById(popupId).style.display = 'none';
-// }
+// Close Popup
+function closePopup(popupId) {
+    document.getElementById(popupId).style.display = 'none';
+}
 
 // Close popup when clicking outside
 document.addEventListener('click', function(event) {
