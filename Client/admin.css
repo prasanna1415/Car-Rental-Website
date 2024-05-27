@@ -1,0 +1,80 @@
+body {
+    background-color: #1c1c1c;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    gap: 50px;
+    margin: 20px 0;
+}
+
+.section {
+    border: 2px solid #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    box-sizing: border-box;
+}
+
+.add-cars form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-cars label, .add-cars input, .add-cars button {
+    margin-bottom: 10px;
+}
+
+.add-cars button {
+    padding: 5px 10px;
+    background-color: #ffffff;
+    color: #1c1c1c;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-cars button:hover {
+    background-color: #e0e0e0;
+}
+
+.full-width-section {
+    width: 100%;
+    border: 2px solid #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin: 20px 0;
+}
+
+.car-entry {
+
+    border: 1px solid #ffffff;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+
+}
+
+.carphoto{
+    width: 450px; 
+    height: 300px; 
+    overflow: hidden; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+}
+
+.carphoto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
