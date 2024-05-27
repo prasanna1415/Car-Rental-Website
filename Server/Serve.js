@@ -1,4 +1,4 @@
-const connectDb = require('./config/dbConnection');
+const connectDb = require('./config/dbAuth');
 const dotenv = require("dotenv").config();
 const port = process.env.PORT || 5000;
 
@@ -7,7 +7,8 @@ const cors = require("cors");
 const app = express();
 const bodyParser = require("body-parser");
 
-const user = require('./models/userModel')
+const user = require('./models/userModel');
+const posts = require('./models/postModel');
 
 app.use(cors()); // Enable CORS for all routes
 app.use(bodyParser.json());
@@ -75,37 +76,54 @@ app.post("/login", async(req,res) =>{
 })
 
 
-
-// app.post("/login", async(req,res) =>{
-//     const {username , password} = req.body;
-
-//     try{
-//         const unHashedpassword = password;
-//         const broisLegit = await user.findOne({ $or: [{ name: username }, { password: unHashedpassword }] });
+app.post('/post',async(req,res)=>{
+    const {imageUrl , modelName , price} = req.body;
 
 
-//         if(broisLegit){
+    try {
+        // Check if a post already exists
+        const existingPost = await posts.findOne({ $or: [{ imageUrl}, { modelName } ] });
+
+        if (existingPost) {
+            // post already exists, return an error response
+            return res.status(400).json({ message: "post already exists" });
+        }
 
 
-//             res.json({ message: `Welcome`});
-//             if(broisLegit.name){
+        // Save post data to database
+        const newPost = await posts.create({ imageUrl , modelName , price });
+        res.json({ message: "post added" });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal server error" });
+    }
 
-//                 res.json({ message: "incorrect password try again"});
-    
-//             }
+}
+)
 
-//         }else{
-//             res.json({ message: "No such user"});
-//         }
+app.get('/post', async (req, res) => {
+    try {
+        const postList = await posts.find();
+        res.json(postList);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
 
 
-        
 
-//     }catch(er){
-//         console.error(er);
-//         res.status(500).json({ message: "Internam server error"});
-//     }
-// })
+
+//no of post in db
+    app.get('/getPost', async (req , res) =>{
+        try{
+            const postCount = await posts.countDocuments({});
+            res.json(postCount);
+        } catch(err){
+            console.log(err);
+            res.status(500).json({message : 'Internal server error'});
+        }
+    })
+
 
 
 app.listen(3000, () => {

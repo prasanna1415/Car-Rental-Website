@@ -1,0 +1,8 @@
+            <div class="box">
+                <div class="box-image">
+                    <img src="image/Hyundai Creta.jpg" alt="">
+                </div>
+                <h3>Hyundai Creta</h3>
+                <h2>Rs.10000 <span>/Day</span></h2>
+                <a href="#" class="btn">Rent Now</a>
+            </div>
