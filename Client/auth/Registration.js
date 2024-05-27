@@ -23,7 +23,7 @@ document.getElementById("registrationForm").addEventListener("submit", async fun
 
         if(check === 'Registration successful'){
             //redirecting
-            window.location.href = "index.html";
+            window.location.href = "theindex.html";
         }
     } catch (error) {
         console.error("Error:", error);

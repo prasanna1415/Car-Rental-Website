@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="admin.css">
 </head>
 <body>
-    <h1>This is admin page mf's</h1>
+    <h1>Admin panel</h1>
+    <div class="container">
+        <div class="section add-cars">
+            <h2>Add Cars</h2>
+            <form id="add-car-form">
+                <label for="car-photo">Car Photo</label>
+                <input type="file" id="car-photo" name="car-photo"><br>
+                <label for="car-name">Car Name</label>
+                <input type="text" id="car-name" name="car-name"><br>
+                <label for="price-per-day">Price per Day</label>
+                <input type="number" id="price-per-day" name="price-per-day"><br>
+                <button type="button" id="add-car-button">Add Car</button>
+            </form>
+        </div>
+        <div class="section orders">
+            <h2>Orders</h2>
+            <p>Client Name</p>
+            <p>Address</p>
+        </div>
+    </div>
+    <div class="full-width-section available-cars" id="available-cars">
+        <h2>List of Available Cars</h2>
+        <!-- Car entries will be dynamically added here -->
+    </div>
+    <script src="admin.js"></script>
 </body>
 </html>

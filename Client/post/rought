@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product</title>
+<style>
+  /* Some basic styling */
+  .product {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+  }
+  img {
+    width: 100%;
+    border-radius: 5px;
+  }
+  .price {
+    margin-top: 10px;
+  }
+  .buy-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div id="product" class="product">
+  <img id="productImage" src="image.jpg" alt="Product Image">
+  <div id="price" class="price">$19.99</div>
+  <button id="buyButton" class="buy-button">Buy Now</button>
+</div>
+
+<script>
+  // Add event listener to the Buy Now button
+  document.getElementById('buyButton').addEventListener('click', function() {
+    // Handle the buy now action, for example, redirecting to a checkout page
+    alert('Buy Now clicked!');
+  });
+</script>
+
+</body>
+</html>
