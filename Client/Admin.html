@@ -22,15 +22,88 @@
             </form>
         </div>
         <div class="section orders">
-            <h2>Orders</h2>
-            <p>Client Name</p>
-            <p>Address</p>
+            <h2>Bookings</h2>
+            <label for="client-name">Client Name</label>
+            <p id="client-name"></p>
+            <label for="phone-number">Phone Number</label>
+            <p id="phone-number" ></p>
+            
         </div>
     </div>
     <div class="full-width-section available-cars" id="available-cars">
-        <h2>List of Available Cars</h2>
-        <!-- Car entries will be dynamically added here -->
+        
+        
     </div>
     <script src="admin.js"></script>
 </body>
 </html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <h1>Admin panel</h1>
+    <div class="grid grid-cols-2 gap-8 max-w-[1320px] mx-auto py-10">
+        <div class="border-2  rounded-xl">
+
+            <form class="flex flex-col items-start space-y-8 px-20 py-10" id="add-car-form">
+                <h1 class="text-3xl text-gray-500 font-bold">Add Cars</h1>
+                <div  class="w-full space-y-2">
+                    <label class="text-xl text-gray-500 block">
+                        Car Photo
+                    </label>
+
+                    <input id="car-photo" type="file" class="text-white"/>
+                </div>
+                <div class="w-full space-y-2">
+                    <label class="text-xl text-gray-500 block">
+                        Car Name
+                    </label>
+
+                    <input id="car-name" type="text" class="border-2 rounded-lg py-3 px-3 w-full"/>
+                </div>
+                <div  class="w-full space-y-2">
+                    <label class="text-xl text-gray-500 block">
+                        Car Price per day
+                    </label>
+
+                    <input id="price-per-day" type="text" class="border-2 rounded-lg py-3 px-3 w-full"/>
+                </div>
+                <button id="add-car-button" class="border-2 border-black rounded-lg text-black hover:text-white hover:bg-black duration-300 w-full py-5"> Add </button>
+            </form>
+        </div>
+        <div class="border-2 rounded-xl px-20 py-10">
+            <div class="flex flex-col items-center">
+                <h1 class="text-3xl font-bold">
+                    Orders
+                </h1>
+                <table class=" w-full">
+                    <thead>
+                        <tr class="border-b">
+                            <th class="text-gray-700 text-lg px-5 py-3 font-bold w-1/2">Client Name</th>
+                            <th class="text-gray-700 text-lg px-5 py-3 font-bold w-1/2">Address</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr class="border-b w-full text-center">
+                            <td class="text-gray-500 text-lg w-1/2 py-3"> asdfadf</td>
+                            <td class="text-gray-500 text-lg px-5 py-3  w-1/2"> asdfadf</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-span-full h-[500px] border-2 rounded-xl full-width-section available-cars" id="available-cars">
+
+            
+        </div>
+    </div>
+</body>
+</html> -->

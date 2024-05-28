@@ -78,3 +78,12 @@ body {
     height: 100%;
     object-fit: cover; 
 }
+
+.deletebtn{
+    position: absolute;
+    margin-left: 70vw;
+    margin-top: -25vh;
+    font-size: 80px;
+    border: none;
+    border-radius: 20px;
+}

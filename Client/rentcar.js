@@ -43,11 +43,6 @@
 document.addEventListener("DOMContentLoaded", async function() {
     const parentContainer = document.getElementById('parent-container');
 
-    try {
-        // Fetch the total number of posts available
-        const postCountResponse = await fetch('http://localhost:3000/getPost');
-        const postCount = await postCountResponse.json();
-
 
 
         try {
@@ -65,10 +60,22 @@ document.addEventListener("DOMContentLoaded", async function() {
                     </div>
                     <h3>${car.modelName}</h3>
                     <h2>Rs${car.price}</h2>
-                    <a class="btn" href="#">Rent Now</a>
+                    <a class="btn" href="#" data-price="${car.price}" data-model="${car.modelName}">Rent Now</a>
+
                 `;
         
                 parentContainer.appendChild(childDiv);
+
+                const rentNowButtons = document.querySelectorAll('.btn');
+                rentNowButtons.forEach(button => {
+                    button.addEventListener('click', handleRentNowClick);
+                });
+            });
+            history.pushState(null, null, location.href);
+
+            // Handle the back button
+            window.addEventListener("popstate", function(event) {
+                history.pushState(null, null, location.href);
             });
         } catch (error) {
             console.error('Error fetching post data:', error);
@@ -76,15 +83,30 @@ document.addEventListener("DOMContentLoaded", async function() {
         }
         
 
-    } catch (error) {
-        console.error('Error fetching post count:', error);
-        parentContainer.innerHTML = '<p>Failed to load content.</p>';
-    }
+
 });
 
-// for (let i = 0; i < postCount; i++) {
+async function handleRentNowClick(event) {
+    // Prevent default link behavior
+    event.preventDefault();
 
-// }
+    // Access data attributes from the clicked button
+    const price = event.target.dataset.price;
+    const modelName =await event.target.dataset.model;
+
+
+
+    
+
+
+    window.location.href = `rentcarform.html?model=${encodeURIComponent(modelName)}&price=${encodeURIComponent(price)}`;
+
+    // Log the data to the console
+
+    console.log('Per Day Price:', price);
+    console.log('Car Model Name:', modelName);
+}
+
 
 
 

@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.info-group {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.info-group label {
+    font-weight: bold;
+}
+
+.info-group div {
+    margin-top: 5px;
+}

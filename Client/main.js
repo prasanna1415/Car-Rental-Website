@@ -8,6 +8,18 @@
 //     }
 // )
 
+document.querySelector("#rentcar").addEventListener('click', ()=>{
+    alert("Please SignIn");
+    window.location.href = "signin.html";
+});
+
+history.pushState(null, null, location.href);
+
+// Handle the back button
+window.addEventListener("popstate", function(event) {
+    history.pushState(null, null, location.href);
+});
+
 // sr.reveal('.text',{delay:200,origin:'top'})
 // sr.reveal('.form-container form',{delay:800,origin:'left'})
 // sr.reveal('.heading',{delay:600,origin:'top'})
