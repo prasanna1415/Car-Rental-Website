@@ -1,3 +1,5 @@
+
+
 document.addEventListener("DOMContentLoaded", function() {
     const pickupDateInput = document.getElementById("pickup-date");
     const returnDateInput = document.getElementById("return-date");
@@ -12,19 +14,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
     history.pushState(null, null, location.href);
 
-    // Handle the back button
+
     window.addEventListener("popstate", function(event) {
         history.pushState(null, null, location.href);
     });
 
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const modelName = urlParams.get('model');
-    const price = urlParams.get('price');
 
 
     document.querySelector('#form-details').addEventListener('submit', async (event)=>{
         event.preventDefault();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const modelName = urlParams.get('model');
+        const price = urlParams.get('price');
+
+
         const pickupDate = document.getElementById("pickup-date").value;
         const returnDate = document.getElementById("return-date").value;
         const location = document.getElementById("location").value;
@@ -37,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ pickupDate,returnDate,location,phone})
+                body: JSON.stringify({ pickupDate,returnDate,location,phone,modelName,price})
             });
 
 
@@ -62,3 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(price);
     })
 });
+
+
+
+

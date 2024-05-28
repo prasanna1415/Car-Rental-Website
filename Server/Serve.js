@@ -11,7 +11,7 @@ const nodemailer = require('nodemailer');
 
 const user = require('./models/userModel');
 const posts = require('./models/postModel');
-const bookings = require('./models/bookingModel');
+const bookings = require('./models/bookingsModel');
 
 app.use(cors()); // Enable CORS for all routes
 app.use(bodyParser.json());
@@ -156,9 +156,9 @@ app.get('/post', async (req, res) => {
 
 app.post('/book', async(req,res) =>{
 
-    const { pickupDate,returnDate,location , phone } = req.body;
+    const { pickupDate,returnDate,location , phone,modelName } = req.body;
     try{
-        const booked = await bookings.create({ pickupDate , returnDate , location , phone});
+        const booked = await bookings.create({ pickupDate , returnDate , location , phone, modelName});
         res.json({ message: "Processing by our team!!  you'll get a call if all goes well"});
 
     }catch(e){

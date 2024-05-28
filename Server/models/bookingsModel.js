@@ -15,7 +15,14 @@ const bookingSchema = mongoose.Schema({
     },
     phone:{
         type:Number,
+    },
+    modelName:{
+        type:String,
+    },
+    price:{
+        type:String,
     }
+
 });
 
 
