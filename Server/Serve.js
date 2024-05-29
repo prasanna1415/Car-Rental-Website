@@ -7,8 +7,11 @@ const cors = require("cors");
 const app = express();
 const bodyParser = require("body-parser");
 
+const nodemailer = require('nodemailer');
+
 const user = require('./models/userModel');
 const posts = require('./models/postModel');
+const bookings = require('./models/bookingsModel');
 
 app.use(cors()); // Enable CORS for all routes
 app.use(bodyParser.json());
@@ -55,25 +58,41 @@ app.post("/register", async (req, res) => {
 
 });
 
-//log in
 
-app.post("/login", async(req,res) =>{
-    const {username , password} = req.body;
 
-    try{
-        const broisLegit = await user.findOne({ $or: [{ name: username }, { password }] });
+// Assuming user is your MongoDB collection
+let email = '';
+app.post("/login", async(req, res) => {
+    const { username, password } = req.body;
 
-        if(broisLegit){
-            res.json({ message: `Welcome ${broisLegit.name}`});
+    try {
+        // Find the user by username
+        const ress = await user.findOne({ name: username });
+
+        if (ress) {
+            // Check if the password matches
+            if (ress.password === password) {
+                // Password matches, user is authenticated
+                res.json({ message: `Welcome ${ress.name}` });
+                
+                // Set the email variable to the user's email
+                email = ress.email;
+                
+            } else {
+                // Password doesn't match
+                res.status(401).json({ message: "Incorrect password" });
+            }
         } else {
-            res.status(401).json({ message: "Incorrect username or password" });
+            // User not found
+            res.status(404).json({ message: "User not found" });
         }
-
-    } catch(er){
-        console.error(er);
-        res.status(500).json({ message: "Internal server error"});
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Internal server error" });
     }
-})
+});
+
+
 
 
 app.post('/post',async(req,res)=>{
@@ -113,19 +132,44 @@ app.get('/post', async (req, res) => {
 
 
 
-//no of post in db
-    app.get('/getPost', async (req , res) =>{
-        try{
-            const postCount = await posts.countDocuments({});
-            res.json(postCount);
-        } catch(err){
-            console.log(err);
-            res.status(500).json({message : 'Internal server error'});
-        }
-    })
+app.post('/book', async(req,res) =>{
+
+    const { pickupDate,returnDate,location , phone,modelName } = req.body;
+    try{
+        const booked = await bookings.create({ pickupDate , returnDate , location , phone, modelName});
+        res.json({ message: "Processing by our team!!  you'll get a call if all goes well"});
+
+    }catch(e){
+        console.error(e);
+        res.status(500).json({ message: "Internal server error" });
+    }
+})
+
+
+
+app.delete('/post/:id', async (req, res) => {
+    try {
+        const postId = req.params.id;
+        await posts.findByIdAndDelete(postId);
+        res.json({ message: 'Post deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting post:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+app.get('/book', async (req, res) => {
+    try {
+        const bookingList = await bookings.find();
+        res.json(bookingList);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
+
 
 
 
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });
+

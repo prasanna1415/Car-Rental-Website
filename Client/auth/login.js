@@ -27,7 +27,8 @@
         
                 if (data.message === `Welcome ${username}`) {
                     // Redirecting
-                    window.location.href = "theindex.html";
+                    // window.location.href = "theindex.html";
+                    window.location.href = `theindex.html?name=${encodeURIComponent(username)}}`;
                 }
             }
 
