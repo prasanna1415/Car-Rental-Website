@@ -11,6 +11,16 @@
       background-color: #333;
       color: #fff;
   }
+
+  .back-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+}
   
   .container {
       display: flex;

@@ -1,40 +1,37 @@
-document.getElementById('add-booking').addEventListener('click', function() {
+document.addEventListener('DOMContentLoaded',async ()=> {
+
+
+
     const bookingList = document.getElementById('booking-list');
 
-    // Create a new booking entry div
-    const newBooking = document.createElement('div');
-    newBooking.className = 'booking-entry';
+    
 
-    // Add the HTML content for the new booking entry
-    newBooking.innerHTML = `       
-     <div>pickup date: <span>${getRandomDate()}</span></div>
-    <div>return date: <span>${getRandomDate()}</span></div>
-    <div>phone: <span>${getRandomPhone()}</span></div>
-    <div>address: <span>${getRandomAddress()}</span></div>`
 
-    ;
+        try{
+            const list = await fetch('http://localhost:3000/book');
+            const bookings = await list.json();
 
-    // Append the new booking entry to the booking list
-    bookingList.appendChild(newBooking);
-});
+            bookings.forEach(booking => {
+                const newBooking = document.createElement('div');
+                newBooking.className = 'booking-entry';
 
-function getRandomDate() {
-    const start = new Date();
-    const end = new Date(start.getFullYear(), start.getMonth() + 2, start.getDate());
-    const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-    return date.toISOString().split('T')[0];
-}
+                newBooking.innerHTML = `       
+                <div>pickup date: <span>${ booking.pickupDate}</span></div>
+                <div>return date: <span>${ booking.returnDate}</span></div>
+                <div>phone: <span>${ booking.phone}</span></div>
+                <div>address: <span>${ booking.location }</span></div>
+                <div>modelName: <span>${ booking.modelName }</span></div>`;
 
-function getRandomPhone() {
-    return 1;
-}
+            bookingList.appendChild(newBooking);
+            });
 
-function getRandomAddress() {
-    const addresses = [
-        '123 Hetauda',
-        '456 Lokanthali',
-        '789 Ghattaghar',
-        '101 Bhaktapur'
-    ];
-    return addresses[Math.floor(Math.random() * addresses.length)];
-}
+
+
+        }catch(e){
+            console.error('Error fetching post data:', e);
+        }
+
+    
+    }
+
+);

@@ -131,28 +131,6 @@ app.get('/post', async (req, res) => {
 
 
 
-// var transporter = nodemailer.createTransport({
-//     service: 'gmail',
-//     auth: {
-//       user: 'youremail@gmail.com',
-//       pass: 'yourpassword'
-//     }
-//   });
-  
-//   var mailOptions = {
-//     from: 'youremail@gmail.com',
-//     to: 'myfriend@yahoo.com',
-//     subject: 'Sending Email using Node.js',
-//     text: 'That was easy!'
-//   };
-  
-//   transporter.sendMail(mailOptions, function(error, info){
-//     if (error) {
-//       console.log(error);
-//     } else {
-//       console.log('Email sent: ' + info.response);
-//     }
-//   }); 
 
 app.post('/book', async(req,res) =>{
 
@@ -179,6 +157,14 @@ app.delete('/post/:id', async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+app.get('/book', async (req, res) => {
+    try {
+        const bookingList = await bookings.find();
+        res.json(bookingList);
+    } catch (err) {
+        res.status(500).json({ message: 'Internal server error' });
+    }
+});
 
 
 
@@ -186,3 +172,4 @@ app.delete('/post/:id', async (req, res) => {
 app.listen(3000, () => {
     console.log("Server is running on port 3000");
 });
+
