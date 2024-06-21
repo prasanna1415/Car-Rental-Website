@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 <h3>Name: ${car.modelName}</h3>
                 <h2>Price per Day: Rs${car.price}</h2>
                 <button class='deletebtn'>Delete</button>
+                <button class='updatebtn'>Update</button>
             `;
 
             // Add delete button event listener
@@ -41,6 +42,12 @@ document.addEventListener('DOMContentLoaded', async function() {
                     console.error('Error deleting car:', error);
                 }
             });
+
+            //update button
+            carEntry.querySelector('.updatebtn').addEventListener('click', ()=>{
+                const caridu = carEntry.dataset.id;
+                window.location.href = `update.html?carid=${encodeURIComponent(caridu)}`;
+            })
 
             availableCarsDiv.appendChild(carEntry);
         });
@@ -89,6 +96,7 @@ document.getElementById('add-car-button').addEventListener('click', async functi
                 <h3>Name: ${carName}</h3>
                 <h2>Price per Day: Rs${pricePerDay}</h2>
                 <button class='deletebtn'>Delete</button>
+                <button class='updatebtn'>Update</button>
             `;
 
             carEntry.dataset.id = result._id;  // Store the new car ID
