@@ -157,6 +157,18 @@ app.delete('/post/:id', async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+
+
+//  app.put('/post/:id',async(req,res)=>{
+//     try{
+//         const postid = req.params.id;
+
+//     }catch{
+
+//     }
+//  })
+
+
 app.get('/book', async (req, res) => {
     try {
         const bookingList = await bookings.find();
