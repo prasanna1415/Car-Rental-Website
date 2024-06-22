@@ -97,3 +97,12 @@ body {
     border: none;
     border-radius: 20px;
 }
+
+.updatebtn{
+    position: absolute;
+    margin-left: 55vw;
+    margin-top: -25vh;
+    font-size: 80px;
+    border: none;
+    border-radius: 20px;
+}

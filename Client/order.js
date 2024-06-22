@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded',async ()=> {
 
 
         }catch(e){
-            console.error('Error fetching post data:', e);
+            console.error('Error fetching order data:', e);
         }
 
     
