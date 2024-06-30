@@ -25,7 +25,11 @@ photoBtn.addEventListener('click',async()=>{
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({ imageUrl: carPhoto })
+
             })
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
         }catch(e){
             console.log(e);
         }
@@ -33,26 +37,47 @@ photoBtn.addEventListener('click',async()=>{
 })
 
 
-priceBtn.addEventListener('click',()=>{
+priceBtn.addEventListener('click',async()=>{
     const carPrice = carPriceInput.value;
     if(carPrice){
         try{
+            const response = await fetch(' backend link here',{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ imageUrl: carPhoto })
+
+            })
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
 
         }catch(e){
-
+            console.log(e);
         }
 
     }
 })
 
 
-carNameBtn.addEventListener('click',()=>{
+carNameBtn.addEventListener('click',async()=>{
     const carName = carModelInput.value;
     if(carName){
         try{
+            const response = await fetch(' backend link here',{
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ imageUrl: carPhoto })
 
+            })
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
         }catch(e){
-
+            console.log(e);
         }
     }
 })
