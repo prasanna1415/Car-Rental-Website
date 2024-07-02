@@ -5,9 +5,9 @@ const port = process.env.PORT || 5000;
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 
-const nodemailer = require('nodemailer');
 
 const user = require('./models/userModel');
 const posts = require('./models/postModel');
@@ -157,16 +157,78 @@ app.delete('/post/:id', async (req, res) => {
         res.status(500).json({ message: 'Internal server error' });
     }
 });
+//update post feture code .....
 
 
-//  app.put('/post/:id',async(req,res)=>{
-//     try{
-//         const postid = req.params.id;
+ app.put('/updatephoto/:id', async (req, res) => {
+    const { imageUrl } = req.body;
+    const { id } = req.params;
 
-//     }catch{
+    try {
+        // Update the post by id with imageUrl
+        const result = await posts.updateOne(
+            { _id: new mongoose.Types.ObjectId(id) }, // Filter by post _id
+            { $set: { imageUrl: imageUrl } } // Update imageUrl field
+        );
 
-//     }
-//  })
+        if (result.nModified === 0) {
+            return res.status(404).json({ error: 'Post not found or imageUrl already set to provided value' });
+        }
+
+        res.status(200).json({ message: 'Image URL updated successfully' });
+
+    } catch (error) {
+        console.error('Error updating image URL:', error);
+        res.status(500).json({ error: 'Failed to update image URL' });
+    }
+});
+
+
+app.put('/updateprice/:id', async (req, res) => {
+    const { price } = req.body;
+    const { id } = req.params;
+
+    try {
+        // Update the post by id with price
+        const result = await posts.updateOne(
+            { _id: new mongoose.Types.ObjectId(id) }, // Filter by post _id
+            { $set: { price: price } } // Update price field
+        );
+
+        if (result.nModified === 0) {
+            return res.status(404).json({ error: 'Post not found or price already set to provided value' });
+        }
+
+        res.status(200).json({ message: 'price updated successfully' });
+
+    } catch (error) {
+        console.error('Error updating price:', error);
+        res.status(500).json({ error: 'Failed to update price' });
+    }
+});
+
+app.put('/updatename/:id', async (req, res) => {
+    const { modelName } = req.body;
+    const { id } = req.params;
+
+    try {
+        // Update the post by id with price
+        const result = await posts.updateOne(
+            { _id: new mongoose.Types.ObjectId(id) }, // Filter by post _id
+            { $set: { modelName: modelName } } // Update name field
+        );
+
+        if (result.nModified === 0) {
+            return res.status(404).json({ error: 'Post not found or Name already set to provided value' });
+        }
+
+        res.status(200).json({ message: 'Name updated successfully' });
+
+    } catch (error) {
+        console.error('Error updating name:', error);
+        res.status(500).json({ error: 'Failed to update name' });
+    }
+});
 
 
 app.get('/book', async (req, res) => {
