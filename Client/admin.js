@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', async function() {
 
             //update button
             carEntry.querySelector('.updatebtn').addEventListener('click', ()=>{
-                const caridu = carEntry.dataset.id;
-                window.location.href = `update.html?carid=${encodeURIComponent(caridu)}`;
+                const carID = carEntry.dataset.id;
+                window.location.href = `update.html?carID=${encodeURIComponent(carID)}`;
             })
 
             availableCarsDiv.appendChild(carEntry);
