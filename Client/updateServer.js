@@ -31,7 +31,10 @@ photoBtn.addEventListener('click',async()=>{
 
             })
             if (!response.ok) {
+                alert('error occured');
                 throw new Error(`HTTP error! Status: ${response.status}`);
+            }else{
+                alert('success');
             }
         }catch(e){
             console.log(e);
@@ -45,23 +48,35 @@ priceBtn.addEventListener('click',async()=>{
     const urlParams = new URLSearchParams(window.location.search);
     const carId = urlParams.get('carID');
     if(carPrice){
+        if(carPrice < 0 || typeof carPrice == 'string'){
 
-        try{
-            const response = await fetch(`http://localhost:3000/updateprice/${carId}`,{
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ price : carPrice })
+            alert('the price cannot be negative number or a string');
 
-            })
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
+        }else{
+            try{
+                const response = await fetch(`http://localhost:3000/updateprice/${carId}`,{
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ price : carPrice })
+    
+                })
+                if (!response.ok) {
+                    alert('error occured');
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                    
+                }else{
+                    alert('Success');
+
+                }
+    
+            }catch(e){
+                console.log(e);
             }
-
-        }catch(e){
-            console.log(e);
         }
+
+
 
     }
 })
@@ -83,7 +98,10 @@ carNameBtn.addEventListener('click',async()=>{
 
             })
             if (!response.ok) {
+                alert('error occured');
                 throw new Error(`HTTP error! Status: ${response.status}`);
+            }else{
+                alert('success');
             }
         }catch(e){
             console.log(e);
