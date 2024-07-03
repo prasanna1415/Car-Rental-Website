@@ -17,6 +17,7 @@ photoBtn.addEventListener('click',async()=>{
 
 
     if(carPhoto){
+
         const urlParams = new URLSearchParams(window.location.search);
         const carId = urlParams.get('carID');
         const carPhotoText = carPhoto ? `post/${carPhoto.split('\\').pop()}` : '';
@@ -31,10 +32,7 @@ photoBtn.addEventListener('click',async()=>{
 
             })
             if (!response.ok) {
-                alert('error occured');
                 throw new Error(`HTTP error! Status: ${response.status}`);
-            }else{
-                alert('success');
             }
         }catch(e){
             console.log(e);
@@ -48,11 +46,11 @@ priceBtn.addEventListener('click',async()=>{
     const urlParams = new URLSearchParams(window.location.search);
     const carId = urlParams.get('carID');
     if(carPrice){
-        if(carPrice < 0 || typeof carPrice == 'string'){
-
-            alert('the price cannot be negative number or a string');
-
+        if(carPrice <0 ){
+            alert("cannot be less than zero");
         }else{
+
+
             try{
                 const response = await fetch(`http://localhost:3000/updateprice/${carId}`,{
                     method: "PUT",
@@ -63,17 +61,13 @@ priceBtn.addEventListener('click',async()=>{
     
                 })
                 if (!response.ok) {
-                    alert('error occured');
                     throw new Error(`HTTP error! Status: ${response.status}`);
-                    
-                }else{
-                    alert('Success');
-
                 }
     
             }catch(e){
                 console.log(e);
             }
+
         }
 
 
@@ -98,10 +92,7 @@ carNameBtn.addEventListener('click',async()=>{
 
             })
             if (!response.ok) {
-                alert('error occured');
                 throw new Error(`HTTP error! Status: ${response.status}`);
-            }else{
-                alert('success');
             }
         }catch(e){
             console.log(e);
